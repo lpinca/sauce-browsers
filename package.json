@@ -1,0 +1,35 @@
+{
+  "name": "sauce-browsers",
+  "version": "0.0.0",
+  "description": "Get a list of objects describing the OS and browser platforms on Sauce Labs using \"zuul\" format",
+  "homepage": "https://github.com/lpinca/sauce-browsers",
+  "bugs": "https://github.com/lpinca/sauce-browsers/issues",
+  "repository": "lpinca/sauce-browsers",
+  "author": "Luigi Pinca",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "saucelabs",
+    "browser",
+    "testing",
+    "zuul"
+  ],
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text tape test/*.js"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "got": "6.7.x"
+  },
+  "devDependencies": {
+    "nock": "9.0.x",
+    "nyc": "10.2.x",
+    "pre-commit": "1.2.x",
+    "tape": "4.6.x"
+  }
+}
