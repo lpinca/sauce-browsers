@@ -24,12 +24,12 @@
     "index.js"
   ],
   "dependencies": {
-    "got": "6.7.x"
+    "got": "^8.2.0"
   },
   "devDependencies": {
-    "nock": "9.0.x",
-    "nyc": "10.2.x",
-    "pre-commit": "1.2.x",
-    "tape": "4.6.x"
+    "nock": "^9.2.1",
+    "nyc": "^11.4.1",
+    "pre-commit": "^1.2.2",
+    "tape": "^4.9.0"
   }
 }
