@@ -151,6 +151,11 @@ function aggregate(browsers) {
     value.push(browser);
   });
 
+  const ie = map.get('internet explorer');
+
+  map.set('iexplore', ie).set('ie', ie);
+  map.set('googlechrome', map.get('chrome'));
+
   return map;
 }
 

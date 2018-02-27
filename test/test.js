@@ -35,6 +35,19 @@ test('works with a specific version on a specific platform', (t) => {
   });
 });
 
+test('works with aliases', (t) => {
+  sauceBrowsers([{
+    platform: 'Windows 2008',
+    name: 'ie',
+    version: 9
+  }]).then(map).then((browsers) => {
+    t.deepEqual(browsers, [
+      ['Windows 2008', 'internet explorer', '9']
+    ]);
+    t.end();
+  });
+});
+
 test('removes duplicate versions when platform is not specified', (t) => {
   sauceBrowsers([
     { name: 'firefox', version: 50 },
@@ -79,10 +92,10 @@ test('includes all versions if one is not specified', (t) => {
     platform: 'Windows 2008'
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2008', 'internet explorer', '8' ],
-      [ 'Windows 2008', 'internet explorer', '9' ],
-      [ 'Windows 2008', 'internet explorer', '10' ],
-      [ 'Windows 2008', 'internet explorer', '11' ]
+      ['Windows 2008', 'internet explorer', '8'],
+      ['Windows 2008', 'internet explorer', '9'],
+      ['Windows 2008', 'internet explorer', '10'],
+      ['Windows 2008', 'internet explorer', '11']
     ]);
     t.end();
   });
@@ -95,8 +108,8 @@ test('works with an array of versions', (t) => {
     version: ['9', '10']
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2008', 'internet explorer', '9' ],
-      [ 'Windows 2008', 'internet explorer', '10' ]
+      ['Windows 2008', 'internet explorer', '9'],
+      ['Windows 2008', 'internet explorer', '10']
     ]);
     t.end();
   });
@@ -108,7 +121,7 @@ test('works with "oldest" versions', (t) => {
     version: 'oldest'
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2003', 'internet explorer', '6' ]
+      ['Windows 2003', 'internet explorer', '6']
     ]);
     t.end();
   });
@@ -120,7 +133,7 @@ test('works with "latest" versions', (t) => {
     name: 'opera'
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2003', 'opera', '12' ]
+      ['Windows 2003', 'opera', '12']
     ]);
     t.end();
   });
@@ -132,8 +145,8 @@ test('works with range of versions (1/4)', (t) => {
     name: 'opera'
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2003', 'opera', '11' ],
-      [ 'Windows 2003', 'opera', '12' ]
+      ['Windows 2003', 'opera', '11'],
+      ['Windows 2003', 'opera', '12']
     ]);
     t.end();
   });
@@ -145,9 +158,9 @@ test('works with range of versions (2/4)', (t) => {
     version: '7..9'
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2003', 'internet explorer', '7' ],
-      [ 'Windows 2008', 'internet explorer', '8' ],
-      [ 'Windows 2008', 'internet explorer', '9' ]
+      ['Windows 2003', 'internet explorer', '7'],
+      ['Windows 2008', 'internet explorer', '8'],
+      ['Windows 2008', 'internet explorer', '9']
     ]);
     t.end();
   });
@@ -159,9 +172,9 @@ test('works with range of versions (3/4)', (t) => {
     version: '-2..latest'
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2008', 'internet explorer', '9' ],
-      [ 'Windows 2012', 'internet explorer', '10' ],
-      [ 'Windows 10', 'internet explorer', '11' ]
+      ['Windows 2008', 'internet explorer', '9'],
+      ['Windows 2012', 'internet explorer', '10'],
+      ['Windows 10', 'internet explorer', '11']
     ]);
     t.end();
   });
@@ -173,9 +186,9 @@ test('works with range of versions (4/4)', (t) => {
     version: [6, '-1..latest']
   }]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
-      [ 'Windows 2003', 'internet explorer', '6' ],
-      [ 'Windows 2012', 'internet explorer', '10' ],
-      [ 'Windows 10', 'internet explorer', '11' ]
+      ['Windows 2003', 'internet explorer', '6'],
+      ['Windows 2012', 'internet explorer', '10'],
+      ['Windows 10', 'internet explorer', '11']
     ]);
     t.end();
   });
