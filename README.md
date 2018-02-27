@@ -18,10 +18,10 @@ npm install --save sauce-browsers
 
 The module exports a single function that takes one argument.
 
-### `sauceBrowsers(list)`
+### `sauceBrowsers([list])`
 
-Converts a list of platforms in "zuul" format to a list of platforms in
-the same format returned by Sauce Labs REST API.
+Converts a list of platforms in "zuul" format to a list of platforms in the same
+format returned by Sauce Labs REST API.
 
 #### Arguments
 
@@ -29,7 +29,8 @@ the same format returned by Sauce Labs REST API.
 
 #### Return value
 
-A `Promise` that resolves with the result.
+A `Promise` that resolves with the result. If the `list` argument is omitted, the
+promise is resolved with all platforms currently supported on Sauce Labs.
 
 #### Example
 

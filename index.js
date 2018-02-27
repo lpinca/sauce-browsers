@@ -169,11 +169,15 @@ function aggregate(browsers) {
  */
 function sauceBrowsers(wanted) {
   return got({
-    path: '/rest/v1/info/browsers/webdriver',
+    path: '/rest/v1/info/platforms/webdriver',
     hostname: 'saucelabs.com',
     protocol: 'https:',
     json: true
-  }).then((res) => transform(wanted, aggregate(res.body)));
+  }).then((res) => {
+    if (wanted === undefined) return res.body;
+
+    return transform(wanted, aggregate(res.body));
+  });
 }
 
 module.exports = sauceBrowsers;

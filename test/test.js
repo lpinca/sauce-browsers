@@ -1,9 +1,9 @@
 'use strict';
 
 const nock = require('nock');
-const path = require('path');
 const test = require('tape');
 
+const allBrowsers = require('./fixtures/all-browsers');
 const sauceBrowsers = require('..');
 
 function map(browsers) {
@@ -12,8 +12,15 @@ function map(browsers) {
 
 nock('https://saucelabs.com')
   .persist()
-  .get('/rest/v1/info/browsers/webdriver')
-  .replyWithFile(200, path.join(__dirname, '/fixtures/all-browsers.json'));
+  .get('/rest/v1/info/platforms/webdriver')
+  .reply(200, allBrowsers);
+
+test('allows to retrieve all browsers on Sauce Labs', (t) => {
+  sauceBrowsers().then((browsers) => {
+    t.deepEqual(browsers, allBrowsers);
+    t.end();
+  });
+});
 
 test('excludes browsers not available on Sauce Labs', (t) => {
   sauceBrowsers([{ name: 'foo' }]).then((browsers) => {
