@@ -84,6 +84,31 @@ sauceBrowsers([
 */
 ```
 
+### Callback variant: `sauceBrowsers([list, ]callback)`
+
+For error-first callback support, use `sauce-browsers/callback`:
+
+```js
+const sauceBrowsers = require('sauce-browsers/callback');
+
+sauceBrowsers([
+  { name: 'firefox', version: 50, platform: 'Mac 10.9'},
+  { name: 'chrome', version: ['oldest', 'latest'] }
+], function (err, browsers) {
+  if (err) throw err;
+  console.log(browsers);
+});
+```
+
+If the `list` argument is omitted, the callback receives all platforms currently supported on Sauce Labs:
+
+```js
+sauceBrowsers(function (err, browsers) {
+  if (err) throw err;
+  console.log(browsers);
+});
+```
+
 ## License
 
 [MIT](LICENSE)
