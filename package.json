@@ -21,7 +21,8 @@
     "node": ">=4.0.0"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "callback.js"
   ],
   "dependencies": {
     "got": "^8.2.0"

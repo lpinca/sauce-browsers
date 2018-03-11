@@ -5,6 +5,7 @@ const test = require('tape');
 
 const allBrowsers = require('./fixtures/all-browsers');
 const sauceBrowsers = require('..');
+const sauceBrowsersCallback = require('../callback');
 
 function map(browsers) {
   return browsers.map((el) => [el.os, el.api_name, el.short_version]);
@@ -225,6 +226,41 @@ test('returns an error if the end version in a range is not found', (t) => {
   }, (err) => {
     t.equal(err instanceof Error, true);
     t.equal(err.message, 'Unable to find end version: 13');
+    t.end();
+  });
+});
+
+test('supports callback with browser list', (t) => {
+  sauceBrowsersCallback([{
+    name: 'internet explorer',
+    version: [6, '-1..latest']
+  }], function (err, browsers) {
+    t.ifError(err, 'no error');
+    t.deepEqual(map(browsers), [
+      ['Windows 2003', 'internet explorer', '6'],
+      ['Windows 2012', 'internet explorer', '10'],
+      ['Windows 10', 'internet explorer', '11']
+    ]);
+    t.end();
+  });
+});
+
+test('supports callback without browser list', (t) => {
+  sauceBrowsersCallback(function (err, browsers) {
+    t.ifError(err, 'no error');
+    t.deepEqual(browsers, allBrowsers);
+    t.end();
+  });
+});
+
+test('supports callback with an error', (t) => {
+  sauceBrowsersCallback([{
+    version: 'oldest..13',
+    name: 'opera'
+  }], (err, browsers) => {
+    t.equal(err instanceof Error, true);
+    t.equal(err.message, 'Unable to find end version: 13');
+    t.equal(browsers, undefined);
     t.end();
   });
 });
