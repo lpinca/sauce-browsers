@@ -100,7 +100,8 @@ sauceBrowsers([
 });
 ```
 
-If the `list` argument is omitted, the callback receives all platforms currently supported on Sauce Labs:
+If the `list` argument is omitted, the callback receives all platforms currently
+supported on Sauce Labs:
 
 ```js
 sauceBrowsers(function (err, browsers) {

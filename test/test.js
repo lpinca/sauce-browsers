@@ -4,8 +4,8 @@ const nock = require('nock');
 const test = require('tape');
 
 const allBrowsers = require('./fixtures/all-browsers');
-const sauceBrowsers = require('..');
 const sauceBrowsersCallback = require('../callback');
+const sauceBrowsers = require('..');
 
 function map(browsers) {
   return browsers.map((el) => [el.os, el.api_name, el.short_version]);
@@ -235,7 +235,7 @@ test('supports callback with browser list', (t) => {
     name: 'internet explorer',
     version: [6, '-1..latest']
   }], function (err, browsers) {
-    t.ifError(err, 'no error');
+    t.ifError(err);
     t.deepEqual(map(browsers), [
       ['Windows 2003', 'internet explorer', '6'],
       ['Windows 2012', 'internet explorer', '10'],
@@ -247,7 +247,7 @@ test('supports callback with browser list', (t) => {
 
 test('supports callback without browser list', (t) => {
   sauceBrowsersCallback(function (err, browsers) {
-    t.ifError(err, 'no error');
+    t.ifError(err);
     t.deepEqual(browsers, allBrowsers);
     t.end();
   });
