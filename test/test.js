@@ -43,6 +43,19 @@ test('works with a specific version on a specific platform', (t) => {
   });
 });
 
+test('ignores case when matching browser names', (t) => {
+  sauceBrowsers([{
+    platform: 'Windows 10',
+    name: 'MicrosoftEdge',
+    version: 13
+  }]).then(map).then((browsers) => {
+    t.deepEqual(browsers, [
+      ['Windows 10', 'microsoftedge', '13']
+    ]);
+    t.end();
+  });
+});
+
 test('works with aliases', (t) => {
   sauceBrowsers([{
     platform: 'Windows 2008',

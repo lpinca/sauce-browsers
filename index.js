@@ -88,9 +88,11 @@ function transform(wanted, available) {
   const browsers = new Set();
 
   wanted.forEach((browser) => {
-    if (!available.has(browser.name)) return;
+    const name = browser.name.toLowerCase();
 
-    let list = available.get(browser.name).slice().sort(compare);
+    if (!available.has(name)) return;
+
+    let list = available.get(name).slice().sort(compare);
     let platforms = browser.platform;
 
     if (platforms === undefined) {
@@ -141,11 +143,12 @@ function aggregate(browsers) {
   const map = new Map();
 
   browsers.forEach((browser) => {
-    let value = map.get(browser.api_name);
+    const name = browser.api_name.toLowerCase();
+    let value = map.get(name);
 
     if (value === undefined) {
       value = [];
-      map.set(browser.api_name, value);
+      map.set(name, value);
     }
 
     value.push(browser);
