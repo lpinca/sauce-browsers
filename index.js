@@ -64,7 +64,9 @@ function filterByVersion(browsers, version) {
     if (start < 0) startIndex = endIndex + Number(start);
     else if (start !== 'oldest') startIndex = versions.indexOf(start);
 
-    if (startIndex < 0) throw new Error(`Unable to find start version: ${start}`);
+    if (startIndex < 0) {
+      throw new Error(`Unable to find start version: ${start}`);
+    }
     if (endIndex < 0) throw new Error(`Unable to find end version: ${end}`);
 
     return browsers.slice(startIndex, endIndex + 1);
@@ -90,7 +92,9 @@ function transform(wanted, available) {
   wanted.forEach((browser) => {
     const name = browser.name.toLowerCase();
 
-    if (!available.has(name)) return;
+    if (!available.has(name)) {
+      throw new Error(`Browser ${name} is not available`);
+    }
 
     let list = available.get(name).slice().sort(compare);
     let platforms = browser.platform;

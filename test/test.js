@@ -23,9 +23,10 @@ test('allows to retrieve all browsers on Sauce Labs', (t) => {
   });
 });
 
-test('excludes browsers not available on Sauce Labs', (t) => {
-  sauceBrowsers([{ name: 'foo' }]).then((browsers) => {
-    t.deepEqual(browsers, []);
+test('throws if browser is not available on Sauce Labs', (t) => {
+  sauceBrowsers([{ name: 'foo' }]).catch((err) => {
+    t.equal(err instanceof Error, true);
+    t.equals(err.message, 'Browser foo is not available');
     t.end();
   });
 });
