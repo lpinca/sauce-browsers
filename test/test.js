@@ -77,7 +77,11 @@ test('removes duplicate versions when platform is not specified', (t) => {
   ]).then(map).then((browsers) => {
     t.deepEqual(browsers, [
       ['Mac 10.9', 'firefox', '50'],
-      ['Windows 2008', 'chrome', '28']
+      [
+        process.versions.modules < 72 ? 'Windows 2008' : 'Windows 2012',
+        'chrome',
+        '28'
+      ]
     ]);
     t.end();
   });
