@@ -117,7 +117,7 @@ sauceBrowsers(function (err, browsers) {
 [npm-sauce-browsers-badge]: https://img.shields.io/npm/v/sauce-browsers.svg
 [npm-sauce-browsers]: https://www.npmjs.com/package/sauce-browsers
 [travis-sauce-browsers-badge]: https://img.shields.io/travis/lpinca/sauce-browsers/master.svg
-[travis-sauce-browsers]: https://travis-ci.org/lpinca/sauce-browsers
+[travis-sauce-browsers]: https://travis-ci.com/lpinca/sauce-browsers
 [coverage-sauce-browsers-badge]: https://img.shields.io/coveralls/lpinca/sauce-browsers/master.svg
 [coverage-sauce-browsers]: https://coveralls.io/r/lpinca/sauce-browsers?branch=master
 [zuul-format]: https://github.com/defunctzombie/zuul/wiki/Zuul.yml#browsers-required
