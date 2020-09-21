@@ -28,10 +28,10 @@
     "got": "^8.2.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.6",
-    "nock": "^11.3.3",
-    "nyc": "^14.1.1",
+    "coveralls": "^3.1.0",
+    "nock": "^13.0.4",
+    "nyc": "^15.1.0",
     "pre-commit": "^1.2.2",
-    "tape": "^4.9.0"
+    "tape": "^5.0.1"
   }
 }
