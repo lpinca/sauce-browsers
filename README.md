@@ -1,7 +1,7 @@
 # sauce-browsers
 
 [![Version npm][npm-sauce-browsers-badge]][npm-sauce-browsers]
-[![Build Status][travis-sauce-browsers-badge]][travis-sauce-browsers]
+[![Build Status][ci-sauce-browsers-badge]][ci-sauce-browsers]
 [![Coverage Status][coverage-sauce-browsers-badge]][coverage-sauce-browsers]
 
 Get a list of objects describing the OS and browser platforms on Sauce Labs
@@ -29,8 +29,8 @@ format returned by Sauce Labs REST API.
 
 #### Return value
 
-A `Promise` that resolves with the result. If the `list` argument is omitted, the
-promise is resolved with all platforms currently supported on Sauce Labs.
+A `Promise` that resolves with the result. If the `list` argument is omitted,
+the promise is resolved with all platforms currently supported on Sauce Labs.
 
 #### Example
 
@@ -38,7 +38,7 @@ promise is resolved with all platforms currently supported on Sauce Labs.
 const sauceBrowsers = require('sauce-browsers');
 
 sauceBrowsers([
-  { name: 'firefox', version: 50, platform: 'Mac 10.9'},
+  { name: 'firefox', version: 50, platform: 'Mac 10.9' },
   { name: 'chrome', version: ['oldest', 'latest'] },
   { name: 'opera', version: 'oldest..latest' }
 ]).then((browsers) => {
@@ -91,13 +91,16 @@ For error-first callback support, use `sauce-browsers/callback`:
 ```js
 const sauceBrowsers = require('sauce-browsers/callback');
 
-sauceBrowsers([
-  { name: 'firefox', version: 50, platform: 'Mac 10.9'},
-  { name: 'chrome', version: ['oldest', 'latest'] }
-], function (err, browsers) {
-  if (err) throw err;
-  console.log(browsers);
-});
+sauceBrowsers(
+  [
+    { name: 'firefox', version: 50, platform: 'Mac 10.9' },
+    { name: 'chrome', version: ['oldest', 'latest'] }
+  ],
+  function (err, browsers) {
+    if (err) throw err;
+    console.log(browsers);
+  }
+);
 ```
 
 If the `list` argument is omitted, the callback receives all platforms currently
@@ -116,9 +119,14 @@ sauceBrowsers(function (err, browsers) {
 
 [npm-sauce-browsers-badge]: https://img.shields.io/npm/v/sauce-browsers.svg
 [npm-sauce-browsers]: https://www.npmjs.com/package/sauce-browsers
-[travis-sauce-browsers-badge]: https://img.shields.io/travis/lpinca/sauce-browsers/master.svg
-[travis-sauce-browsers]: https://travis-ci.com/lpinca/sauce-browsers
-[coverage-sauce-browsers-badge]: https://img.shields.io/coveralls/lpinca/sauce-browsers/master.svg
-[coverage-sauce-browsers]: https://coveralls.io/r/lpinca/sauce-browsers?branch=master
-[zuul-format]: https://github.com/defunctzombie/zuul/wiki/Zuul.yml#browsers-required
+[ci-sauce-browsers-badge]:
+  https://img.shields.io/github/workflow/status/lpinca/sauce-browsers/CI/master?label=CI
+[ci-sauce-browsers]:
+  https://github.com/lpinca/sauce-browsers/actions?query=workflow%3ACI+branch%3Amaster
+[coverage-sauce-browsers-badge]:
+  https://img.shields.io/coveralls/lpinca/sauce-browsers/master.svg
+[coverage-sauce-browsers]:
+  https://coveralls.io/r/lpinca/sauce-browsers?branch=master
+[zuul-format]:
+  https://github.com/defunctzombie/zuul/wiki/Zuul.yml#browsers-required
 [zuul]: https://github.com/defunctzombie/zuul
