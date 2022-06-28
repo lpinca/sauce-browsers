@@ -18,14 +18,14 @@
     "test": "c8 --reporter=lcov --reporter=text tape test/*.js"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=10.19.0"
   },
   "files": [
     "callback.js",
     "index.js"
   ],
   "dependencies": {
-    "got": "^8.2.0"
+    "got": "^11.8.5"
   },
   "devDependencies": {
     "c8": "^7.3.0",

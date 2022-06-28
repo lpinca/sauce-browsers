@@ -178,8 +178,8 @@ function sauceBrowsers(wanted) {
   return got({
     path: '/rest/v1/info/platforms/webdriver',
     hostname: 'saucelabs.com',
+    responseType: 'json',
     protocol: 'https:',
-    json: true
   }).then((res) => {
     if (wanted === undefined) return res.body;
 
