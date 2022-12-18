@@ -120,7 +120,7 @@ sauceBrowsers(function (err, browsers) {
 [npm-sauce-browsers-badge]: https://img.shields.io/npm/v/sauce-browsers.svg
 [npm-sauce-browsers]: https://www.npmjs.com/package/sauce-browsers
 [ci-sauce-browsers-badge]:
-  https://img.shields.io/github/workflow/status/lpinca/sauce-browsers/CI/master?label=CI
+  https://img.shields.io/github/actions/workflow/status/lpinca/sauce-browsers/ci.yml?branch=master&label=CI
 [ci-sauce-browsers]:
   https://github.com/lpinca/sauce-browsers/actions?query=workflow%3ACI+branch%3Amaster
 [coverage-sauce-browsers-badge]:
